@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.selenium.pages.HomePageHelper;
+import ru.stqa.selenium.util.DataProviders;
 
 
 public class HomePageTests extends TestBase {
@@ -25,10 +26,12 @@ public class HomePageTests extends TestBase {
                 "Name of the listEvent element is not 'List events'");
     }
 
-    @Test
-    public void singleFilterHolidaysByShabbat()  {
-        homePage.filterEventsByHolidayShabbat();
-        Assert.assertTrue(homePage.allEventsBelongToHolidayShabbat());
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "singleFilterByHoliday")
+    public void singleFilterHolidaysBy(String holiday)  {
+        //String holiday = "Purim";
+       // Shabbat
+        homePage.filterEventsByHoliday(holiday);
+        Assert.assertTrue(homePage.allEventsBelongToHoliday(holiday));
     }
 
 
