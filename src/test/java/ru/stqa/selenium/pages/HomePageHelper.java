@@ -33,7 +33,10 @@ public class HomePageHelper extends PageBase {
     }
 
     public HomePageHelper waitUntilPageIsLoaded(){
+        log.info("-- HomePageHelper: waitUntilPageIsLoaded() was started");
+        log.info("-- Wait until loginIcon element is clickable");
         waitUntilElementIsClickable(loginIcon, 20);
+        log.info("-- Wait until all events are visible");
         waitUntilAllElementsVisible(eventsList,20);
         return this;
     }
@@ -45,16 +48,19 @@ public class HomePageHelper extends PageBase {
 
 
     public HomePageHelper filterEventsByHoliday(String holiday) {
-        // ----- to wait that select-element (filter by holiday) and all options are loaded ---
+        log.info("-- HomePageHelper: filterEventsByHoliday(" + holiday +") was started");
+        log.info("-- To wait that select-element (filter by holiday) and all options are loaded ");
         waitUntilElementIsVisible(filterHolidays,30);
         waitUntilAllElementsPresent(By.xpath("//select[@name = 'selectholidays']/option"),30);
-        // ------ choose filter "shabbat" ------
+        log.info("-- Choose filter by holiday " + holiday);
         selectValueFromList(filterHolidays,holiday);
+        log.info("-- To wait that clearFilterButton element is clickable");
 
-        // ------ wait that filter "shabbat" is chosen -----
         waitUntilElementIsClickable(clearFilterButton,20);
+        log.info("------ To wait that filter by holiday " + holiday + "is chosen -----");
         waitUntilElementIsPresent(By
                 .xpath("//option[@selected][@value = '" + holiday +"']"),20);
+        log.info("-- To wait that all events are loaded ---");
         waitUntilAllElementsVisible(eventsList,40);
 
         return this;
@@ -63,6 +69,8 @@ public class HomePageHelper extends PageBase {
 
 
     public Boolean allEventsBelongToHoliday(String holiday) {
+        log.info("-- HomePageHelper: allEventsBelongToHoliday() " +
+                "was started for holiday-" + holiday);
 
         // --- verify that all holidays values are "Shabbat" ----
         int counter = 0;

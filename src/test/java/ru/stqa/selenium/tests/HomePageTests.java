@@ -13,27 +13,32 @@ public class HomePageTests extends TestBase {
 
     @BeforeMethod
     public void initTests(){
-        //homePage = new HomePageHelper(driver);
+        log.info("-- HomePageTests - @BeforeMethod - initTests() was started");
         homePage = PageFactory.initElements(driver, HomePageHelper.class);
+        log.info("--- HomePage was loaded--");
         homePage.waitUntilPageIsLoaded();
 
     }
 
     @Test
     public void homePageVerificationTest()  {
+        log.startTestCase("homePageVerificationTest()");
+        log.info("-- Assert - Verification that name of the listEvent element is 'List events'");
 
         Assert.assertTrue(homePage.correctPageIsLoaded(),
                 "Name of the listEvent element is not 'List events'");
     }
 
+
     @Test(dataProviderClass = DataProviders.class, dataProvider = "singleFilterByHoliday")
     public void singleFilterHolidaysBy(String holiday)  {
         //String holiday = "Purim";
        // Shabbat
+        log.startTestCase("singleFilterHolidaysBy, TestData: holiday - " + holiday );
+
         homePage.filterEventsByHoliday(holiday);
         Assert.assertTrue(homePage.allEventsBelongToHoliday(holiday));
     }
-
 
 
 }

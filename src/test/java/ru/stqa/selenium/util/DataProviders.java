@@ -26,6 +26,21 @@ public class DataProviders {
         in.close();
         return userData.iterator();
     }
+    @DataProvider
+    public static Iterator<Object[]> lastFamilyCh() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                DataProviders.class
+                        .getResourceAsStream("/DLastNameOfFamilyChanging.data")));
+
+        List<Object[]> userData = new ArrayList<Object[]>();
+        String line = in.readLine();
+        while (line != null) {
+            userData.add(line.split(";"));
+            line = in.readLine();
+        }
+        in.close();
+        return userData.iterator();
+    }
 
     @DataProvider
     public static Iterator<Object[]> loginPositive() throws IOException {
@@ -47,8 +62,9 @@ public class DataProviders {
     @DataProvider
     public static Iterator<Object[]> dataProviderSecond() {
         List<Object[]> data = new ArrayList();
-        data.add(new Object[]{"login1", "pssword1"});
-        data.add(new Object[]{"login2", "password2"});
+        data.add(new Object[]{"login1", "psw1"});
+        data.add(new Object[]{"login2", "psw2"});
+        data.add(new Object[]{"login3", "psw3"});
 
         return data.iterator();
     }
