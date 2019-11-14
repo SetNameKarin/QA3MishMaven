@@ -36,7 +36,7 @@ HomePageAuthHelper homePageAuth;
                 "It is not login screen or there is no 'registration' on login screen");
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderSecond")
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderThird")
     public void loginNegativeTest(String login, String psw)  {
 
         loginPage.loginToTheSystem(login,psw);

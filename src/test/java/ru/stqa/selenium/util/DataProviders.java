@@ -74,19 +74,34 @@ public class DataProviders {
     public Iterator<Object[]> dataProviderThird() {
         List<Object[]> data = new ArrayList();
 
-        for(int i = 0; i < 5; ++i) {
-            data.add(new Object[]{this.generateRandomName(), this.generateRandomPassword()});
+        for(int i = 0; i < 3; ++i) {
+            data.add(new Object[]{this.generateRandomString(8), this.generateRandomString(3)});
         }
 
         return data.iterator();
     }
 
     private Object generateRandomPassword() {
+
         return "pass" + (new Random()).nextInt();
     }
 
     private Object generateRandomName() {
+
         return "demo" + (new Random()).nextInt()+"@gmail.com";
+    }
+
+    private String generateRandomString(int smb) {
+        String str = "";
+        char ch;
+        int number;
+        Random gen = new Random();
+        for(int i=0; i < smb; i++){
+            number = ' ' + gen.nextInt('}' - ' ' +1);
+            str = str + (char)number;
+        }
+
+        return str;
     }
 
 
