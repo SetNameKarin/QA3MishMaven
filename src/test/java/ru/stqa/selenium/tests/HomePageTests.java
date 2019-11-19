@@ -1,5 +1,6 @@
 package ru.stqa.selenium.tests;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -27,6 +28,7 @@ public class HomePageTests extends TestBase {
 
         Assert.assertTrue(homePage.correctPageIsLoaded(),
                 "Name of the listEvent element is not 'List events'");
+
     }
 
 

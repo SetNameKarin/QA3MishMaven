@@ -14,6 +14,8 @@ public class HomePageHelper extends PageBase {
     @FindBy(xpath = "//div[@class = 'itemEventInsert']")
     List<WebElement> eventsList;
 
+    // To verify screenshot
+    //@FindBy(id = "idtitletypesearcheventss")
     @FindBy(id = "idtitletypesearchevents")
     WebElement listEvent;
 
