@@ -12,7 +12,7 @@ import ru.stqa.selenium.util.DataProviders;
 public class HomePageTests extends TestBase {
     HomePageHelper homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests(){
         log.info("-- HomePageTests - @BeforeMethod - initTests() was started");
         homePage = PageFactory.initElements(driver, HomePageHelper.class);
@@ -32,7 +32,7 @@ public class HomePageTests extends TestBase {
     }
 
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "singleFilterByHoliday")
+    @Test(groups = {"sanity"}, dataProviderClass = DataProviders.class, dataProvider = "singleFilterByHoliday")
     public void singleFilterHolidaysBy(String holiday)  {
         //String holiday = "Purim";
        // Shabbat

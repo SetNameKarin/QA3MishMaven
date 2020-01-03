@@ -67,7 +67,7 @@ public class TestBase {
 
   }
 
-  @BeforeSuite
+  @BeforeSuite(alwaysRun = true)
   public void initTestSuite() throws IOException {
     log.info("-- @BeforeSuite-- initTestSuite() was started");
     SuiteConfiguration config = new SuiteConfiguration();
@@ -78,7 +78,7 @@ public class TestBase {
     capabilities = config.getCapabilities();
   }
 
-  @BeforeMethod
+  @BeforeMethod(alwaysRun = true)
   public void initWebDriver() {
     log.info("-- @BeforeMethod-- initWebDriver() was started");
     log.info("- driver was defined");
